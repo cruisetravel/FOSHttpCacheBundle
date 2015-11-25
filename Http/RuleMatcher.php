@@ -82,6 +82,18 @@ class RuleMatcher implements RuleMatcherInterface
     }
 
     /**
+     * Set expression language
+     *
+     * @param string $expressionLanguage
+     */
+    public function setExpressionLanguage($expressionLanguage)
+    {
+        if (is_string($expressionLanguage) && class_exists($expressionLanguage)) {
+            $this->expressionLanguage = new $expressionLanguage();
+        }
+    }
+
+    /**
      * @return ExpressionLanguage
      */
     private function getExpressionLanguage()

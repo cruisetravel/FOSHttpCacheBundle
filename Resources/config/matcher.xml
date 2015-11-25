@@ -14,13 +14,16 @@
                  class="%fos_http_cache.request_matcher.class%"
                  public="false"
         />
-        
+
         <service id="fos_http_cache.rule_matcher"
                  class="%fos_http_cache.rule_matcher.class%"
                  public="false"
         >
             <argument/>
             <argument/>
+            <call method="setExpressionLanguage">
+                <argument on-invalid="ignore">%fos_http_cache.custom_expression_class%</argument>
+            </call>
         </service>
     </services>
 </container>

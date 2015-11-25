@@ -102,6 +102,18 @@ class TagSubscriber extends AbstractRuleSubscriber implements EventSubscriberInt
     }
 
     /**
+     * Set expression language
+     *
+     * @param string $expressionLanguage
+     */
+    public function setExpressionLanguage($expressionLanguage)
+    {
+        if (is_string($expressionLanguage) && class_exists($expressionLanguage)) {
+            $this->expressionLanguage = new $expressionLanguage();
+        }
+    }
+
+    /**
      * Get the tags from the annotations on the controller that was used in the
      * request.
      *
